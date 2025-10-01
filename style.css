@@ -1251,3 +1251,4 @@ width: 100%;
   .floating-main-div { width: calc(100vw - 30px); }
   .floating-btn,
   .floating-btn_2 { position: static !important; }
+}
