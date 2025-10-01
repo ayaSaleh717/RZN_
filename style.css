@@ -1129,6 +1129,14 @@ width: 100%;
   .content { padding: 12px; }
   .floating-content { padding: 16px; }
 
+  /* Shrink floating container on mobile */
+  .floating-main-div {
+    width: calc(100vw - 24px);
+    max-width: 100%;
+    min-width: auto;
+    border-radius: 16px;
+  }
+
   /* Floating buttons row at top-left */
   .floating-btn,
   .floating-btn_2 {
