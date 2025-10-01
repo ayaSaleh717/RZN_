@@ -30,11 +30,9 @@ function updateThemeToggleButton() {
 }
 
 function initTheme() {
-    if (!localStorage.getItem('theme')) {
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        currentTheme = prefersDark ? 'dark' : 'light';
-    }
-    applyTheme(currentTheme);
+    // Force default to light on every load
+    currentTheme = 'light';
+    applyTheme('light');
 }
 
 // إضافة متغيرات جديدة للتحكم بالصوت
@@ -1296,28 +1294,11 @@ function printDietPlan() {
       document.getElementById('speech-volume').addEventListener('input', function() {
           document.getElementById('volume-value').textContent = (this.value * 100).toFixed(0) + '%';
       });
-
+  
       // Persist key input fields so users don't have to re-enter them
       persistFieldValue('civil-id', 'civilId');
       persistFieldValue('full-name', 'fullName');
       persistFieldValue('weight', 'weight');
       persistFieldValue('height', 'height');
       persistFieldValue('api-key-input', 'openaiApiKey');
-
-      // Theme persistence (toggle with #themeToggle, store under cookie 'theme' and localStorage)
-      const themeBtn = document.getElementById('themeToggle');
-      const savedTheme = getCookie('theme') || localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      if (themeBtn) {
-          // Update icon according to theme
-          themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-          themeBtn.addEventListener('click', function() {
-              const current = document.documentElement.getAttribute('data-theme') || 'light';
-              const next = current === 'dark' ? 'light' : 'dark';
-              document.documentElement.setAttribute('data-theme', next);
-              setCookie('theme', next);
-              localStorage.setItem('theme', next);
-              themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
-          });
-      }
   });

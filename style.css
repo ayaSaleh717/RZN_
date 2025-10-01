@@ -5,6 +5,8 @@
     --accent-color: #FAD0C4;
     --background-color-light: #E8BCB9;
     --background-color-dark: #44444E;
+    /* Ensure components using var(--background-color) have a value in light mode */
+    --background-color: var(--background-color-light);
     --text-dark: #333;
     --white: #ffffff;
     --shadow: rgba(114, 134, 211, 0.2);
