@@ -894,7 +894,7 @@ body {
 }
 
 /* Forms */
-.form-group { margin-bottom: var(--space-4); }
+.form-group { margin-bottom: var(--space-5); }
 .language-selector { margin: var(--space-2) 0; }
 
 /* Buttons */
@@ -913,11 +913,13 @@ body {
 .form-group textarea {
   display: block;
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border: 1px solid var(--accent-color);
   border-radius: 12px;
   background-color: var(--background-color);
   color: var(--text-dark);
+  min-height: 44px; /* better touch target */
+  font-size: 1rem;
   transition: border-color 160ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
 
