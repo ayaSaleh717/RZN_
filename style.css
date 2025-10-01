@@ -25,21 +25,21 @@
 
 /* Dark theme overrides (use only requested colors) */
 :root[data-theme="dark"] {
-    /* Trending dark palette: violet/indigo accents on deep slate surfaces */
-    --primary-color: #8B5CF6;   /* violet-500 */
-    --secondary-color: #6366F1; /* indigo-500 */
-    --accent-color: #F472B6;    /* pink-400 */
+    /* Calmer dark palette: emerald/teal accents on neutral dark surfaces */
+    --primary-color: #10B981;   /* emerald-500 */
+    --secondary-color: #0EA5A4; /* teal-500 */
+    --accent-color: #38BDF8;    /* sky-400 */
 
-    --background-color: var(--background-color-dark);
-    --text-dark: #E5E7EB;       /* slate-200 */
-    --text-light: #94A3B8;      /* slate-400 */
+    --background-color: #0F1115;  /* neutral dark bg */
+    --text-dark: #E6E6E6;         /* near-white for main text */
+    --text-light: #9CA3AF;        /* muted text */
 
     /* Surfaces/cards in dark */
-    --white: #111827;           /* slate-800 as elevated surface */
-    --surface-muted: #0F172A;   /* slate-900 for muted areas */
+    --white: #1B1F24;             /* elevated card surface */
+    --surface-muted: #14181D;     /* muted inner areas */
 
-    /* Borders/shadows tune for dark */
-    --border-color: rgba(148, 163, 184, 0.22);
+    /* Borders/shadows tuned for dark */
+    --border-color: rgba(255, 255, 255, 0.12);
     /* keep shadow as-is to avoid structural changes */
 }
 
@@ -56,6 +56,61 @@ body {
 
 :root[data-theme="dark"] body {
     background-color: var(--background-color-dark);
+    background-image: none; /* remove light-mode dot texture in dark */
+}
+
+/* Dark mode typography: force readable light text on dark surfaces */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .content,
+:root[data-theme="dark"] .floating-main-div,
+:root[data-theme="dark"] .floating-content,
+:root[data-theme="dark"] .tab,
+:root[data-theme="dark"] .tabcontent,
+:root[data-theme="dark"] .chat-container,
+:root[data-theme="dark"] .records-container,
+:root[data-theme="dark"] .speech-container,
+:root[data-theme="dark"] .nutrition-tips,
+:root[data-theme="dark"] .voice-settings,
+:root[data-theme="dark"] .quick-questions {
+  color: var(--text-dark);
+}
+
+/* Headings and basic text in dark mode */
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4,
+:root[data-theme="dark"] h5,
+:root[data-theme="dark"] h6,
+:root[data-theme="dark"] p,
+:root[data-theme="dark"] label,
+:root[data-theme="dark"] span,
+:root[data-theme="dark"] small,
+:root[data-theme="dark"] li,
+:root[data-theme="dark"] th,
+:root[data-theme="dark"] td {
+  color: var(--text-dark);
+}
+
+/* Dark mode: tab buttons text color to light gray */
+:root[data-theme="dark"] .tab .tablinks {
+  color: #CBD5E1 !important; /* slate-300 */
+  border-color: rgba(255, 255, 255, 0.12);
+  background: transparent;
+}
+:root[data-theme="dark"] .tab .tablinks:hover {
+  color: #FFFFFF;
+  background-color: color-mix(in srgb, var(--surface-muted) 80%, var(--primary-color) 20%);
+}
+:root[data-theme="dark"] .tab .tablinks.active {
+  color: #FFFFFF; /* keep readable when active */
+  border-color: rgba(255, 255, 255, 0.18);
+  /* Dark-accented background for active tab */
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary-color) 35%, var(--surface-muted)) 0%,
+    color-mix(in srgb, var(--secondary-color) 35%, var(--surface-muted)) 100%
+  );
 }
 
 /* Smooth theme transitions */
