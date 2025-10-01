@@ -25,7 +25,6 @@
         </div>
 
 
-
         <!-- Floating Main Div -->
         <div class="floating-main-div" id="floating-main-div">
             <div
@@ -36,7 +35,7 @@
         <!-- Hidden content templates -->
         <div
             class="hidden-templates" style="display: none;">
-           
+
             <!-- الصفحة الرئيسية -->
             <div id="main-page">
                 <div class="header">
@@ -48,11 +47,13 @@
                         <i class="fas fa-robot"></i>
                     </div>
                     <h2>مرحباً! أنا رِزْن</h2>
-                    <p>أخصائي التغذية الذكي المدعوم بالذكاء الاصطناعي</p>
-                    <p>يمكنني الإجابة على أي سؤال حول التغذية والصحة!</p>
+                    <p>أهلاً وسهلاً👋</p>
+                    <p>
+                        أنا أخصائي التغذية رِزْن أنا هنا لأساعدك بخطولت بسيطة و نصائح عملية لحياة صحية أفضل 🌱🍎
+                    </p>
+
                 </div>
 
-            
 
                 <button class="btn" onclick="goToNextContent('start-page')">
                     <i class="fas fa-play-circle"></i>
@@ -72,7 +73,6 @@
                 </div>
             </div>
 
-    
 
             <!-- صفحة كلمة المرور -->
             <div id="password-page" class="hidden">
@@ -167,29 +167,6 @@
             </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <!-- صفحة المحادثة مع التعرف على الصوت المحسن -->
             <div id="conversation-page" class="">
                 <div class="chat-header">
@@ -212,700 +189,671 @@
                             <option value="es-ES">Español (ES)</option>
                         </select>
                         <!-- <label for="voice-select" style="margin-inline-start:10px;">الصوت:</label> -->
-                        <!-- <select id="voice-select" onchange="changeVoice()"> -->
-                            <!-- voices will be populated dynamically -->
-                        </select>
+                    <!-- <select id="voice-select" onchange="changeVoice()"> -->
+                        <!-- voices will be populated dynamically -->
+                    </select>
+                </div>
+
+                <!-- إعدادات الصوت المضافة -->
+                <div class="voice-settings">
+                    <h4>
+                        <i class="fas fa-volume-up"></i>
+                        إعدادات الصوت</h4>
+
+                    <div class="setting-group">
+                        <span class="setting-value" id="rate-value">0.8</span>
+                        <label for="speech-rate">سرعة النطق:</label>
+                        <input type="range" id="speech-rate" min="0.5" max="1.5" step="0.1" value="0.8" onchange="updateSpeechSettings()">
                     </div>
 
-                    <!-- إعدادات الصوت المضافة -->
-                    <div class="voice-settings">
-                        <h4>
-                            <i class="fas fa-volume-up"></i>
-                            إعدادات الصوت</h4>
-
-                        <div class="setting-group">
-                            <span class="setting-value" id="rate-value">0.8</span>
-                            <label for="speech-rate">سرعة النطق:</label>
-                            <input type="range" id="speech-rate" min="0.5" max="1.5" step="0.1" value="0.8" onchange="updateSpeechSettings()">
-                        </div>
-
-                        <div class="setting-group">
-                            <span class="setting-value" id="pitch-value">1.0</span>
-                            <label for="speech-pitch">نغمة الصوت:</label>
-                            <input type="range" id="speech-pitch" min="0.5" max="2.0" step="0.1" value="1.0" onchange="updateSpeechSettings()">
-                        </div>
-
-                        <div class="setting-group">
-                            <span class="setting-value" id="volume-value">100%</span>
-                            <label for="speech-volume">مستوى الصوت:</label>
-                            <input type="range" id="speech-volume" min="0" max="1" step="0.1" value="1.0" onchange="updateSpeechSettings()">
-                        </div>
-
-                        <div class="auto-speak">
-                            <input type="checkbox" id="auto-speak" checked onchange="updateSpeechSettings()">
-                            <label for="auto-speak">التحدث التلقائي للأسئلة</label>
-                        </div>
+                    <div class="setting-group">
+                        <span class="setting-value" id="pitch-value">1.0</span>
+                        <label for="speech-pitch">نغمة الصوت:</label>
+                        <input type="range" id="speech-pitch" min="0.5" max="2.0" step="0.1" value="1.0" onchange="updateSpeechSettings()">
                     </div>
 
-                    <div class="speech-status" id="speech-status">
-                        انقر على الميكروفون لبدء التحدث
+                    <div class="setting-group">
+                        <span class="setting-value" id="volume-value">100%</span>
+                        <label for="speech-volume">مستوى الصوت:</label>
+                        <input type="range" id="speech-volume" min="0" max="1" step="0.1" value="1.0" onchange="updateSpeechSettings()">
                     </div>
 
-                    <div class="voice-controls">
-                        <button class="btn btn-voice" id="start-listening" onclick="toggleListening()">
-                            <i class="fas fa-microphone"></i>
-                            التحدث مع رِزْن
-                        </button>
-                        <button class="btn tts-btn" id="tts-btn" onclick="toggleSpeaking()">
-                            <i class="fas fa-volume-up"></i>
-                            نطق النص
-                        </button>
-                        <button class="btn" onclick="repeatQuestion()">
-                            <i class="fas fa-redo"></i>
-                            تكرار السؤال
-                        </button>
-                        <button class="btn btn-secondary" onclick="clearTranscript()">
-                            <i class="fas fa-trash"></i>
-                            مسح النص
-                        </button>
+                    <div class="auto-speak">
+                        <input type="checkbox" id="auto-speak" checked onchange="updateSpeechSettings()">
+                        <label for="auto-speak">التحدث التلقائي للأسئلة</label>
                     </div>
+                </div>
 
-                    <div class="speech-text" id="speech-text" contenteditable="true">
-                        النص المعترف به سيظهر هنا...
-                    </div>
+                <div class="speech-status" id="speech-status">
+                    انقر على الميكروفون لبدء التحدث
+                </div>
 
-                    <button class="btn btn-success" onclick="sendVoiceMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                        إرسال النص إلى رِزْن
+                <div class="voice-controls">
+                    <button class="btn btn-voice" id="start-listening" onclick="toggleListening()">
+                        <i class="fas fa-microphone"></i>
+                        التحدث مع رِزْن
+                    </button>
+                    <button class="btn tts-btn" id="tts-btn" onclick="toggleSpeaking()">
+                        <i class="fas fa-volume-up"></i>
+                        نطق النص
+                    </button>
+                    <button class="btn" onclick="repeatQuestion()">
+                        <i class="fas fa-redo"></i>
+                        تكرار السؤال
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearTranscript()">
+                        <i class="fas fa-trash"></i>
+                        مسح النص
                     </button>
                 </div>
 
-                <div class="chat-container" id="chat-container">
-                    <div class="message bot-message">
-                        مرحباً! أنا رِزْن، صديقك الجديد. يمكنك التحدث معي بالضغط على زر الميكروفون أو الكتابة في الأسفل.
-                    </div>
+                <div class="speech-text" id="speech-text" contenteditable="true">
+                    النص المعترف به سيظهر هنا...
                 </div>
 
-                <div class="emoji-picker">
-                    <span class="emoji" onclick="addEmoji('😊')">😊</span>
-                    <span class="emoji" onclick="addEmoji('😋')">😋</span>
-                    <span class="emoji" onclick="addEmoji('🍕')">🍕</span>
-                    <span class="emoji" onclick="addEmoji('🍎')">🍎</span>
-                    <span class="emoji" onclick="addEmoji('👍')">👍</span>
-                </div>
-
-                <div id="chat-input" class="chat-input"  class="hidden">
-                    <input type="text" id="user-input" placeholder="اكتب رسالتك هنا...">
-                    <button onclick="sendMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-
-                <button class="btn" onclick="goToNextContent('diet-plan-page')">
-                    <i class="fas fa-arrow-right"></i>
-                    التالي
+                <button class="btn btn-success" onclick="sendVoiceMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                    إرسال النص إلى رِزْن
                 </button>
-                <button class="btn btn-secondary" onclick="goBackContent()">
-                    <i class="fas fa-arrow-right"></i>
-                    رجوع
-                </button>
+            </div>
 
-                <div class="progress-bar">
-                    <div class="progress" style="width: 70%"></div>
+            <div class="chat-container" id="chat-container">
+                <div class="message bot-message">
+                    مرحباً! أنا رِزْن، صديقك الجديد. يمكنك التحدث معي بالضغط على زر الميكروفون أو الكتابة في الأسفل.
                 </div>
             </div>
 
+            <div class="emoji-picker">
+                <span class="emoji" onclick="addEmoji('😊')">😊</span>
+                <span class="emoji" onclick="addEmoji('😋')">😋</span>
+                <span class="emoji" onclick="addEmoji('🍕')">🍕</span>
+                <span class="emoji" onclick="addEmoji('🍎')">🍎</span>
+                <span class="emoji" onclick="addEmoji('👍')">👍</span>
+            </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-   <!-- صفحة الدردشة مع الذكاء الاصطناعي -->
-   <div id="ai-chat-page" class="hidden">
-    <div class="welcome-section">
-        <h2>دردشة مع رِزْن الذكي</h2>
-        <p>اسألني أي سؤال عن التغذية، الصحة، الرياضة، أو أي موضوع آخر!</p>
-    </div>
-    
-    <div class="api-key-input" id="api-key-section">
-        <h4><i class="fas fa-key"></i> مفتاح OpenAI API</h4>
-        <p>أدخل مفتاح API للتمتع بميزات الذكاء الاصطناعي الكاملة:</p>
-        <div class="form-group">
-            <input type="password" id="api-key-input" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" value="">
-        </div>
-        <button class="btn btn-success" onclick="saveApiKey()">
-            <i class="fas fa-save"></i> حفظ المفتاح
-        </button>
-        <p style="font-size: 0.8rem; margin-top: 10px; color: #666;">
-            يمكنك الحصول على مفتاح API من <a href="https://platform.openai.com/api-keys/" target="_blank">OpenAI</a>
-        </p>
-    </div>
-  
-    <div class="chat-container" id="ai-chat-container">
-        <div class="message bot-message">
-            <div>مرحباً! أنا رِزْن، صديقك الذكي المدعوم بالذكاء الاصطناعي. 🧠</div>
-            <div>يمكنني مساعدتك في:</div>
-            <div>• نصائح التغذية الصحية 🍎</div>
-            <div>• خطط الوجبات الغذائية 📋</div>
-            <div>• معلومات عن الرياضة واللياقة 🏃‍♂️</div>
-            <div>• الإجابة على أي سؤال لديك! 💭</div>
-        </div>
-    </div>
-    
-    <div class="quick-questions">
-        <h4>أسئلة سريعة يمكنك تجربتها:</h4>
-        <div class="quick-buttons">
-            <button class="btn-quick" onclick="askQuickQuestion('ما هي أفضل الأطعمة للطاقة في الصباح؟')">أفضل فطور للطاقة</button>
-            <button class="btn-quick" onclick="askQuickQuestion('كيف يمكنني زيادة وزني بطريقة صحية؟')">زيادة الوزن الصحية</button>
-            <button class="btn-quick" onclick="askQuickQuestion('ما هي تمارين الرياضة المناسبة للمبتدئين؟')">تمارين للمبتدئين</button>
-            <button class="btn-quick" onclick="askQuickQuestion('كم كوب ماء يجب شربه يومياً؟')">كمية الماء اليومية</button>
-        </div>
-    </div>
-    
-    <div class="chat-input">
-        <input type="text" id="ai-user-input" placeholder="اكتب سؤالك هنا...">
-        <button onclick="sendAiMessage()"><i class="fas fa-paper-plane"></i></button>
-    </div>
-    
-    <button class="btn btn-secondary" onclick="goBackContent('main-page')">
-        <i class="fas fa-arrow-right"></i> رجوع
-    </button>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- صفحة النظام الغذائي -->
-            <div id="diet-plan-page" class="hidden">
-                <div class="welcome-section">
-                    <h2>النظام الغذائي الخاص بك</h2>
-                    <p>تم تصميم هذا النظام بناءً على تفضيلاتك واحتياجاتك</p>
-                </div>
-
-                <div
-                    id="personalized-message" class="personalized-message"><!-- سيتم ملء هذه الرسالة بناءً على تفضيلات المستخدم -->
-                </div>
-
-                <div class="nutrition-info">
-                    <h4>
-                        <i class="fas fa-info-circle"></i>
-                        المعلومات الغذائية</h4>
-                    <div class="nutrition-item">
-                        <span>السعرات الحرارية:</span>
-                        <span id="calories">1800 سعرة</span>
-                    </div>
-                    <div class="nutrition-item">
-                        <span>البروتين:</span>
-                        <span id="protein">70 غرام</span>
-                    </div>
-                    <div class="nutrition-item">
-                        <span>الكربوهيدرات:</span>
-                        <span id="carbs">250 غرام</span>
-                    </div>
-                    <div class="nutrition-item">
-                        <span>الدهون:</span>
-                        <span id="fats">60 غرام</span>
-                    </div>
-                </div>
-
-                <div class="food-plan">
-                    <h3>
-                        <i class="fas fa-utensils"></i>
-                        الخطة الغذائية الأسبوعية</h3>
-
-                    <div class="tab">
-                        <button class="tablinks active" onclick="openDay(event, 'sunday')">الأحد</button>
-                        <button class="tablinks" onclick="openDay(event, 'monday')">الاثنين</button>
-                        <button class="tablinks" onclick="openDay(event, 'tuesday')">الثلاثاء</button>
-                        <button class="tablinks" onclick="openDay(event, 'wednesday')">الأربعاء</button>
-                        <button class="tablinks" onclick="openDay(event, 'thursday')">الخميس</button>
-                        <button class="tablinks" onclick="openDay(event, 'friday')">الجمعة</button>
-                        <button class="tablinks" onclick="openDay(event, 'saturday')">السبت</button>
-                    </div>
-
-                    <div id="sunday" class="tabcontent" style="display: block;">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-sun"></i>
-                                الأحد</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="sunday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="sunday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="sunday-snack1-quantity"></div>
-                                    <div class="meal-description" id="sunday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="sunday-lunch-quantity"></div>
-                                    <div class="meal-description" id="sunday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="sunday-snack2-quantity"></div>
-                                    <div class="meal-description" id="sunday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="sunday-dinner-quantity"></div>
-                                    <div class="meal-description" id="sunday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="monday" class="tabcontent">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-moon"></i>
-                                الاثنين</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="monday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="monday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="monday-snack1-quantity"></div>
-                                    <div class="meal-description" id="monday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="monday-lunch-quantity"></div>
-                                    <div class="meal-description" id="monday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="monday-snack2-quantity"></div>
-                                    <div class="meal-description" id="monday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="monday-dinner-quantity"></div>
-                                    <div class="meal-description" id="monday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="tuesday" class="tabcontent">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-star"></i>
-                                الثلاثاء</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="tuesday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="tuesday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="tuesday-snack1-quantity"></div>
-                                    <div class="meal-description" id="tuesday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="tuesday-lunch-quantity"></div>
-                                    <div class="meal-description" id="tuesday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="tuesday-snack2-quantity"></div>
-                                    <div class="meal-description" id="tuesday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="tuesday-dinner-quantity"></div>
-                                    <div class="meal-description" id="tuesday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="wednesday" class="tabcontent">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-cloud"></i>
-                                الأربعاء</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="wednesday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="wednesday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="wednesday-snack1-quantity"></div>
-                                    <div class="meal-description" id="wednesday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="wednesday-lunch-quantity"></div>
-                                    <div class="meal-description" id="wednesday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="wednesday-snack2-quantity"></div>
-                                    <div class="meal-description" id="wednesday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="wednesday-dinner-quantity"></div>
-                                    <div class="meal-description" id="wednesday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="thursday" class="tabcontent">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-bolt"></i>
-                                الخميس</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="thursday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="thursday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="thursday-snack1-quantity"></div>
-                                    <div class="meal-description" id="thursday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="thursday-lunch-quantity"></div>
-                                    <div class="meal-description" id="thursday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="thursday-snack2-quantity"></div>
-                                    <div class="meal-description" id="thursday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="thursday-dinner-quantity"></div>
-                                    <div class="meal-description" id="thursday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="friday" class="tabcontent">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-heart"></i>
-                                الجمعة</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="friday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="friday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="friday-snack1-quantity"></div>
-                                    <div class="meal-description" id="friday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="friday-lunch-quantity"></div>
-                                    <div class="meal-description" id="friday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="friday-snack2-quantity"></div>
-                                    <div class="meal-description" id="friday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="friday-dinner-quantity"></div>
-                                    <div class="meal-description" id="friday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="saturday" class="tabcontent">
-                        <div class="day-plan">
-                            <h4>
-                                <i class="fas fa-tree"></i>
-                                السبت</h4>
-                            <div class="meal">
-                                <span class="meal-icon">🌅</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="saturday-breakfast-quantity"></div>
-                                    <div class="meal-description" id="saturday-breakfast"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🍎</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="saturday-snack1-quantity"></div>
-                                    <div class="meal-description" id="saturday-snack1"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌞</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="saturday-lunch-quantity"></div>
-                                    <div class="meal-description" id="saturday-lunch"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🥛</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="saturday-snack2-quantity"></div>
-                                    <div class="meal-description" id="saturday-snack2"></div>
-                                </div>
-                            </div>
-                            <div class="meal">
-                                <span class="meal-icon">🌙</span>
-                                <div class="meal-details">
-                                    <div class="meal-quantity" id="saturday-dinner-quantity"></div>
-                                    <div class="meal-description" id="saturday-dinner"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- نصائح رِزْن -->
-                <div class="nutrition-tips">
-                    <h4>
-                        <i class="fas fa-lightbulb"></i>
-                        نصائح من صديقك رِزْن</h4>
-                    <ul>
-                        <li>
-                            <i class="fas fa-tint"></i>
-                            لا تنسى تشرب موية كثير باليوم 💧</li>
-                        <li>
-                            <i class="fas fa-apple-alt"></i>
-                            حاول تاكل فواكه وخضار كل يوم 🍎🥕</li>
-                        <li>
-                            <i class="fas fa-cookie"></i>
-                            لا تكثر من الحلويات 👀</li>
-                        <li>
-                            <i class="fas fa-running"></i>
-                            جرب تتحرك وتلعب رياضة تحبها ⚽🏃‍♂️</li>
-                        <li>
-                            <i class="fas fa-bed"></i>
-                            نام بدري عشان تصحى نشيط 🌙☀️</li>
-                        <li>
-                            <i class="fas fa-utensils"></i>
-                            لا تنسى الفطور، يعطيك طاقة للمدرسة 💡</li>
-                    </ul>
-                </div>
-
-                <button class="btn print-btn" onclick="printDietPlan()">
-                    <i class="fas fa-print"></i>
-                    طباعة النظام
+            <div id="chat-input" class="chat-input" class="hidden">
+                <input type="text" id="user-input" placeholder="اكتب رسالتك هنا...">
+                <button onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
                 </button>
-                <button class="btn" onclick="generateNewPlan()">
-                    <i class="fas fa-sync-alt"></i>
-                    توليد خطة جديدة
-                </button>
-                <button class="btn" onclick="goToNextContent('main-page')">
-                    <i class="fas fa-home"></i>
-                    العودة للرئيسية
-                </button>
+            </div>
 
-                <div class="progress-bar">
-                    <div class="progress" style="width: 100%"></div>
+            <button class="btn" onclick="goToNextContent('diet-plan-page')">
+                <i class="fas fa-arrow-right"></i>
+                التالي
+            </button>
+            <button class="btn btn-secondary" onclick="goBackContent()">
+                <i class="fas fa-arrow-right"></i>
+                رجوع
+            </button>
+
+            <div class="progress-bar">
+                <div class="progress" style="width: 70%"></div>
+            </div>
+        </div>
+
+
+        <!-- صفحة الدردشة مع الذكاء الاصطناعي -->
+        <div id="ai-chat-page" class="hidden">
+            <div class="welcome-section">
+                <h2>دردشة مع رِزْن الذكي</h2>
+                <p>اسألني أي سؤال عن التغذية، الصحة، الرياضة، أو أي موضوع آخر!</p>
+            </div>
+
+            <div class="api-key-input" id="api-key-section">
+                <h4>
+                    <i class="fas fa-key"></i>
+                    مفتاح OpenAI API</h4>
+                <p>أدخل مفتاح API للتمتع بميزات الذكاء الاصطناعي الكاملة:</p>
+                <div class="form-group">
+                    <input type="password" id="api-key-input" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" value="">
+                </div>
+                <button class="btn btn-success" onclick="saveApiKey()">
+                    <i class="fas fa-save"></i>
+                    حفظ المفتاح
+                </button>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: #666;">
+                    يمكنك الحصول على مفتاح API من
+                    <a href="https://platform.openai.com/api-keys/" target="_blank">OpenAI</a>
+                </p>
+            </div>
+
+            <div class="chat-container" id="ai-chat-container">
+                <div class="message bot-message">
+                    <div>مرحباً! أنا رِزْن، صديقك الذكي المدعوم بالذكاء الاصطناعي. 🧠</div>
+                    <div>يمكنني مساعدتك في:</div>
+                    <div>• نصائح التغذية الصحية 🍎</div>
+                    <div>• خطط الوجبات الغذائية 📋</div>
+                    <div>• معلومات عن الرياضة واللياقة 🏃‍♂️</div>
+                    <div>• الإجابة على أي سؤال لديك! 💭</div>
                 </div>
             </div>
 
-            <!-- صفحة السجل الصحي مع الجدول -->
-            <div id="health-record-page" class="hidden">
-                <div class="welcome-section">
-                    <h2>
-                        <i class="fas fa-heartbeat"></i>
-                        السجلات الصحية</h2>
-                    <p>إدارة وعرض السجلات الصحية للمستخدمين</p>
+            <div class="quick-questions">
+                <h4>أسئلة سريعة يمكنك تجربتها:</h4>
+                <div class="quick-buttons">
+                    <button class="btn-quick" onclick="askQuickQuestion('ما هي أفضل الأطعمة للطاقة في الصباح؟')">أفضل فطور للطاقة</button>
+                    <button class="btn-quick" onclick="askQuickQuestion('كيف يمكنني زيادة وزني بطريقة صحية؟')">زيادة الوزن الصحية</button>
+                    <button class="btn-quick" onclick="askQuickQuestion('ما هي تمارين الرياضة المناسبة للمبتدئين؟')">تمارين للمبتدئين</button>
+                    <button class="btn-quick" onclick="askQuickQuestion('كم كوب ماء يجب شربه يومياً؟')">كمية الماء اليومية</button>
                 </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="ai-user-input" placeholder="اكتب سؤالك هنا...">
+                <button onclick="sendAiMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <button class="btn btn-secondary" onclick="goBackContent('main-page')">
+                <i class="fas fa-arrow-right"></i>
+                رجوع
+            </button>
+        </div>
+
+
+        <!-- صفحة النظام الغذائي -->
+        <div id="diet-plan-page" class="hidden">
+            <div class="welcome-section">
+                <h2>النظام الغذائي الخاص بك</h2>
+                <p>تم تصميم هذا النظام بناءً على تفضيلاتك واحتياجاتك</p>
+            </div>
+
+            <div
+                id="personalized-message" class="personalized-message"><!-- سيتم ملء هذه الرسالة بناءً على تفضيلات المستخدم -->
+            </div>
+
+            <div class="nutrition-info">
+                <h4>
+                    <i class="fas fa-info-circle"></i>
+                    المعلومات الغذائية</h4>
+                <div class="nutrition-item">
+                    <span>السعرات الحرارية:</span>
+                    <span id="calories">1800 سعرة</span>
+                </div>
+                <div class="nutrition-item">
+                    <span>البروتين:</span>
+                    <span id="protein">70 غرام</span>
+                </div>
+                <div class="nutrition-item">
+                    <span>الكربوهيدرات:</span>
+                    <span id="carbs">250 غرام</span>
+                </div>
+                <div class="nutrition-item">
+                    <span>الدهون:</span>
+                    <span id="fats">60 غرام</span>
+                </div>
+            </div>
+
+            <div class="food-plan">
+                <h3>
+                    <i class="fas fa-utensils"></i>
+                    الخطة الغذائية الأسبوعية</h3>
 
                 <div class="tab">
-                    <button class="tablinks active" onclick="openTab(event, 'view-record')">عرض السجلات</button>
-                    <button class="tablinks" onclick="openTab(event, 'add-record')">إضافة سجل جديد</button>
+                    <button class="tablinks active" onclick="openDay(event, 'sunday')">الأحد</button>
+                    <button class="tablinks" onclick="openDay(event, 'monday')">الاثنين</button>
+                    <button class="tablinks" onclick="openDay(event, 'tuesday')">الثلاثاء</button>
+                    <button class="tablinks" onclick="openDay(event, 'wednesday')">الأربعاء</button>
+                    <button class="tablinks" onclick="openDay(event, 'thursday')">الخميس</button>
+                    <button class="tablinks" onclick="openDay(event, 'friday')">الجمعة</button>
+                    <button class="tablinks" onclick="openDay(event, 'saturday')">السبت</button>
                 </div>
 
-                <div id="view-record" class="tabcontent" style="display: block;">
-                    <h3>السجلات الصحية المحفوظة</h3>
-
-                    <div class="records-container">
-                        <table class="records-table" id="health-records-table">
-                            <thead>
-                                <tr>
-                                    <th>السجل المدني</th>
-                                    <th>الاسم</th>
-                                    <th>العمر</th>
-                                    <th>الوزن (كجم)</th>
-                                    <th>الطول (سم)</th>
-                                    <th>التاريخ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- سيتم ملء هذا القسم بالبيانات من localStorage -->
-                            </tbody>
-                        </table>
+                <div id="sunday" class="tabcontent" style="display: block;">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-sun"></i>
+                            الأحد</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="sunday-breakfast-quantity"></div>
+                                <div class="meal-description" id="sunday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="sunday-snack1-quantity"></div>
+                                <div class="meal-description" id="sunday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="sunday-lunch-quantity"></div>
+                                <div class="meal-description" id="sunday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="sunday-snack2-quantity"></div>
+                                <div class="meal-description" id="sunday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="sunday-dinner-quantity"></div>
+                                <div class="meal-description" id="sunday-dinner"></div>
+                            </div>
+                        </div>
                     </div>
-
-                    <button class="btn btn-secondary" onclick="clearAllRecords()">
-                        <i class="fas fa-trash"></i>
-                        حذف جميع السجلات
-                    </button>
                 </div>
 
-                <div id="add-record" class="tabcontent">
-                    <h3>إضافة سجل صحي جديد</h3>
-
-                    <div class="form-group">
-                        <label for="record-civil-id">
-                            <i class="fas fa-id-card"></i>
-                            السجل المدني</label>
-                        <input type="text" id="record-civil-id" placeholder="أدخل السجل المدني">
+                <div id="monday" class="tabcontent">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-moon"></i>
+                            الاثنين</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="monday-breakfast-quantity"></div>
+                                <div class="meal-description" id="monday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="monday-snack1-quantity"></div>
+                                <div class="meal-description" id="monday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="monday-lunch-quantity"></div>
+                                <div class="meal-description" id="monday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="monday-snack2-quantity"></div>
+                                <div class="meal-description" id="monday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="monday-dinner-quantity"></div>
+                                <div class="meal-description" id="monday-dinner"></div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="record-name">
-                            <i class="fas fa-user"></i>
-                            الاسم الكامل</label>
-                        <input type="text" id="record-name" placeholder="أدخل الاسم الكامل">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="record-age">
-                            <i class="fas fa-birthday-cake"></i>
-                            العمر</label>
-                        <input type="number" id="record-age" placeholder="أدخل العمر">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="record-gender">
-                            <i class="fas fa-venus-mars"></i>
-                            الجنس</label>
-                        <select id="record-gender">
-                            <option value="male">ذكر</option>
-                            <option value="female">أنثى</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="record-weight">
-                            <i class="fas fa-weight"></i>
-                            الوزن (كجم)</label>
-                        <input type="number" id="record-weight" placeholder="أدخل الوزن">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="record-height">
-                            <i class="fas fa-ruler-vertical"></i>
-                            الطول (سم)</label>
-                        <input type="number" id="record-height" placeholder="أدخل الطول">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="record-health-info">
-                            <i class="fas fa-file-medical"></i>
-                            معلومات صحية إضافية</label>
-                        <textarea id="record-health-info" rows="3" placeholder="معلومات عن الحساسية، الأمراض المزمنة، إلخ..."></textarea>
-                    </div>
-
-                    <button class="btn btn-success" onclick="saveHealthRecord()">
-                        <i class="fas fa-save"></i>
-                        حفظ السجل
-                    </button>
                 </div>
 
-                <button class="btn btn-secondary" onclick="goBackContent()">
-                    <i class="fas fa-arrow-right"></i>
-                    رجوع
-                </button>
+                <div id="tuesday" class="tabcontent">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-star"></i>
+                            الثلاثاء</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="tuesday-breakfast-quantity"></div>
+                                <div class="meal-description" id="tuesday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="tuesday-snack1-quantity"></div>
+                                <div class="meal-description" id="tuesday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="tuesday-lunch-quantity"></div>
+                                <div class="meal-description" id="tuesday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="tuesday-snack2-quantity"></div>
+                                <div class="meal-description" id="tuesday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="tuesday-dinner-quantity"></div>
+                                <div class="meal-description" id="tuesday-dinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="wednesday" class="tabcontent">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-cloud"></i>
+                            الأربعاء</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="wednesday-breakfast-quantity"></div>
+                                <div class="meal-description" id="wednesday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="wednesday-snack1-quantity"></div>
+                                <div class="meal-description" id="wednesday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="wednesday-lunch-quantity"></div>
+                                <div class="meal-description" id="wednesday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="wednesday-snack2-quantity"></div>
+                                <div class="meal-description" id="wednesday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="wednesday-dinner-quantity"></div>
+                                <div class="meal-description" id="wednesday-dinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="thursday" class="tabcontent">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-bolt"></i>
+                            الخميس</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="thursday-breakfast-quantity"></div>
+                                <div class="meal-description" id="thursday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="thursday-snack1-quantity"></div>
+                                <div class="meal-description" id="thursday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="thursday-lunch-quantity"></div>
+                                <div class="meal-description" id="thursday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="thursday-snack2-quantity"></div>
+                                <div class="meal-description" id="thursday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="thursday-dinner-quantity"></div>
+                                <div class="meal-description" id="thursday-dinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="friday" class="tabcontent">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-heart"></i>
+                            الجمعة</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="friday-breakfast-quantity"></div>
+                                <div class="meal-description" id="friday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="friday-snack1-quantity"></div>
+                                <div class="meal-description" id="friday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="friday-lunch-quantity"></div>
+                                <div class="meal-description" id="friday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="friday-snack2-quantity"></div>
+                                <div class="meal-description" id="friday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="friday-dinner-quantity"></div>
+                                <div class="meal-description" id="friday-dinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="saturday" class="tabcontent">
+                    <div class="day-plan">
+                        <h4>
+                            <i class="fas fa-tree"></i>
+                            السبت</h4>
+                        <div class="meal">
+                            <span class="meal-icon">🌅</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="saturday-breakfast-quantity"></div>
+                                <div class="meal-description" id="saturday-breakfast"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🍎</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="saturday-snack1-quantity"></div>
+                                <div class="meal-description" id="saturday-snack1"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌞</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="saturday-lunch-quantity"></div>
+                                <div class="meal-description" id="saturday-lunch"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🥛</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="saturday-snack2-quantity"></div>
+                                <div class="meal-description" id="saturday-snack2"></div>
+                            </div>
+                        </div>
+                        <div class="meal">
+                            <span class="meal-icon">🌙</span>
+                            <div class="meal-details">
+                                <div class="meal-quantity" id="saturday-dinner-quantity"></div>
+                                <div class="meal-description" id="saturday-dinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نصائح رِزْن -->
+            <div class="nutrition-tips">
+                <h4>
+                    <i class="fas fa-lightbulb"></i>
+                    نصائح من صديقك رِزْن</h4>
+                <ul>
+                    <li>
+                        <i class="fas fa-tint"></i>
+                        لا تنسى تشرب موية كثير باليوم 💧</li>
+                    <li>
+                        <i class="fas fa-apple-alt"></i>
+                        حاول تاكل فواكه وخضار كل يوم 🍎🥕</li>
+                    <li>
+                        <i class="fas fa-cookie"></i>
+                        لا تكثر من الحلويات 👀</li>
+                    <li>
+                        <i class="fas fa-running"></i>
+                        جرب تتحرك وتلعب رياضة تحبها ⚽🏃‍♂️</li>
+                    <li>
+                        <i class="fas fa-bed"></i>
+                        نام بدري عشان تصحى نشيط 🌙☀️</li>
+                    <li>
+                        <i class="fas fa-utensils"></i>
+                        لا تنسى الفطور، يعطيك طاقة للمدرسة 💡</li>
+                </ul>
+            </div>
+
+            <button class="btn print-btn" onclick="printDietPlan()">
+                <i class="fas fa-print"></i>
+                طباعة النظام
+            </button>
+            <button class="btn" onclick="generateNewPlan()">
+                <i class="fas fa-sync-alt"></i>
+                توليد خطة جديدة
+            </button>
+            <button class="btn" onclick="goToNextContent('main-page')">
+                <i class="fas fa-home"></i>
+                العودة للرئيسية
+            </button>
+
+            <div class="progress-bar">
+                <div class="progress" style="width: 100%"></div>
             </div>
         </div>
-    </body>
-</html>
 
-<script src="./app.js"></script>
-<!-- تسجيل Service Worker -->
- <script src="./rejester.js"></script>
-</body>
-</html>
+        <!-- صفحة السجل الصحي مع الجدول -->
+        <div id="health-record-page" class="hidden">
+            <div class="welcome-section">
+                <h2>
+                    <i class="fas fa-heartbeat"></i>
+                    السجلات الصحية</h2>
+                <p>إدارة وعرض السجلات الصحية للمستخدمين</p>
+            </div>
+
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event, 'view-record')">عرض السجلات</button>
+                <button class="tablinks" onclick="openTab(event, 'add-record')">إضافة سجل جديد</button>
+            </div>
+
+            <div id="view-record" class="tabcontent" style="display: block;">
+                <h3>السجلات الصحية المحفوظة</h3>
+
+                <div class="records-container">
+                    <table class="records-table" id="health-records-table">
+                        <thead>
+                            <tr>
+                                <th>السجل المدني</th>
+                                <th>الاسم</th>
+                                <th>العمر</th>
+                                <th>الوزن (كجم)</th>
+                                <th>الطول (سم)</th>
+                                <th>التاريخ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- سيتم ملء هذا القسم بالبيانات من localStorage -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="btn btn-secondary" onclick="clearAllRecords()">
+                    <i class="fas fa-trash"></i>
+                    حذف جميع السجلات
+                </button>
+            </div>
+
+            <div id="add-record" class="tabcontent">
+                <h3>إضافة سجل صحي جديد</h3>
+
+                <div class="form-group">
+                    <label for="record-civil-id">
+                        <i class="fas fa-id-card"></i>
+                        السجل المدني</label>
+                    <input type="text" id="record-civil-id" placeholder="أدخل السجل المدني">
+                </div>
+
+                <div class="form-group">
+                    <label for="record-name">
+                        <i class="fas fa-user"></i>
+                        الاسم الكامل</label>
+                    <input type="text" id="record-name" placeholder="أدخل الاسم الكامل">
+                </div>
+
+                <div class="form-group">
+                    <label for="record-age">
+                        <i class="fas fa-birthday-cake"></i>
+                        العمر</label>
+                    <input type="number" id="record-age" placeholder="أدخل العمر">
+                </div>
+
+                <div class="form-group">
+                    <label for="record-gender">
+                        <i class="fas fa-venus-mars"></i>
+                        الجنس</label>
+                    <select id="record-gender">
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="record-weight">
+                        <i class="fas fa-weight"></i>
+                        الوزن (كجم)</label>
+                    <input type="number" id="record-weight" placeholder="أدخل الوزن">
+                </div>
+
+                <div class="form-group">
+                    <label for="record-height">
+                        <i class="fas fa-ruler-vertical"></i>
+                        الطول (سم)</label>
+                    <input type="number" id="record-height" placeholder="أدخل الطول">
+                </div>
+
+                <div class="form-group">
+                    <label for="record-health-info">
+                        <i class="fas fa-file-medical"></i>
+                        معلومات صحية إضافية</label>
+                    <textarea id="record-health-info" rows="3" placeholder="معلومات عن الحساسية، الأمراض المزمنة، إلخ..."></textarea>
+                </div>
+
+                <button class="btn btn-success" onclick="saveHealthRecord()">
+                    <i class="fas fa-save"></i>
+                    حفظ السجل
+                </button>
+            </div>
+
+            <button class="btn btn-secondary" onclick="goBackContent()">
+                <i class="fas fa-arrow-right"></i>
+                رجوع
+            </button>
+        </div>
+    </body>
+</html></div></body></html><script src="./app.js"></script><!-- تسجيل Service Worker --><script src="./rejester.js"></script></body></html>
