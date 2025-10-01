@@ -1013,11 +1013,14 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
 /* Progress */
 .progress-bar { margin: var(--space-3) 0; }
 /* --- Modern Input Fields (theme-driven) --- */
+.form-group { width: 100%; max-width: 100%; box-sizing: border-box; }
 .form-group input,
 .form-group select,
 .form-group textarea {
   display: block;
   width: 100%;
+  max-width: 100%; /* never overflow container */
+  min-width: 0;    /* fix overflow inside flex parents */
   padding: 14px 16px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -1140,15 +1143,30 @@ width: 100%;
 /* Make the floating content act as the scroll area so main-page fits */
 .floating-content {
   width: 100%;
+  box-sizing: border-box;
 }
 /* --- Main Page Dimension Fit --- */
 @media (max-width: 768px) {
+  /* Inputs: compact but tap-friendly on mobile */
+  .form-group label { font-size: 0.95rem; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 14px;
+    font-size: 1rem;
+    min-height: 44px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Icon inputs: reduce inner padding slightly on small screens */
+  .input-with-icon input { padding-right: 36px; }
+}
   #main-page {
     width: 100%;
     max-width: 100%;
     height: auto;
     max-height: calc(90vh - 60px); /* accounts for .floating-content 30px top/bottom padding */
-    box-sizing: border-box;
   }
   .floating{
     display: flex;
@@ -1206,18 +1224,10 @@ width: 100%;
     100% { transform: scale(1); }
 }
 
- /* حالة النطق */
-  #speech-status.listening {
-      color: #4CAF50;
-      font-weight: bold;
-  }
-}
-
 /* Mobile layout: sizes, margins, paddings only */
 @media (max-width: 768px) {
   /* Stack primary/action buttons */
   .btn,
-  .btn-secondary,
   .btn-quick,
   .chat-input button {
      width: 100%;
