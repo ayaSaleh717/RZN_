@@ -1174,7 +1174,7 @@ width: 100%;
 
 /* Ultra-narrow safeguard (old small DP settings) */
 @media (max-width: 360px) {
-  .floating-main-div { width: calc(100vw - 16px); }
+  .floating-main-div { width: calc(100vw - 30px); }
   .floating-btn { top: 8px; left: 8px; }
-  .floating-btn_2 { top: 8px; left: 68px; }
+  .floating-btn_2 { top: 8px; left: 70px; }
 }
