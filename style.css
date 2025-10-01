@@ -1202,16 +1202,20 @@ width: 100%;
     border-radius: 16px;
   }
 
-  /* Floating buttons row at top-left */
+  /* Floating buttons: make smaller and static in flow on mobile */
   .floating-btn,
   .floating-btn_2 {
-    top: 12px;
-    bottom: auto;
-    left: 12px;
-    right: auto;
+    position: static !important;
+    top: auto; bottom: auto; left: auto; right: auto;
     transform: none;
+    width: 44px; height: 44px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    box-shadow: none;
+    animation: none;
+    z-index: auto;
+    margin: 8px 6px 0 0; /* simple spacing when stacked in flow */
   }
-  .floating-btn_2 { left: 84px; }
 
   /* Chat height tuning on mobile */
   .chat-container { height: 240px; }
@@ -1227,38 +1231,23 @@ width: 100%;
   .floating-main-div { width: 90vw; max-width: 340px; margin: 0 auto; }
 
   /* Inputs: comfortable but not oversized */
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 12px 14px;
-    min-height: 40px;
-    font-size: 0.95rem;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Smaller buttons on extra-narrow */
-  .btn { padding: 10px 14px; font-size: 0.92rem; }
-  .btn-quick { font-size: 0.85rem; padding: 8px; }
-  .tab button { font-size: 0.9rem; padding: 10px; }
-
-  /* Chat height tighter */
-  .chat-container { height: 200px; }
-
-  /* Buttons: compact vertical spacing */
   .btn,
   .btn-secondary,
   .btn-quick,
   .chat-input button { margin: 6px 0; }
 
-  /* Floating buttons: reduce gap so both fit comfortably */
-  .floating-btn { top: 10px; left: 10px; }
-  .floating-btn_2 { top: 10px; left: 74px; }
+  /* Floating buttons: keep static and compact on mobile */
+  .floating-btn,
+  .floating-btn_2 {
+    position: static !important;
+    width: 40px; height: 40px;
+    font-size: 1rem;
+    margin: 6px 6px 0 0;
+  }
 }
 
 /* Ultra-narrow safeguard (old small DP settings) */
 @media (max-width: 360px) {
   .floating-main-div { width: calc(100vw - 30px); }
-  .floating-btn { top: 8px; left: 8px; }
-  .floating-btn_2 { top: 8px; left: 70px; }
-}
+  .floating-btn,
+  .floating-btn_2 { position: static !important; }
