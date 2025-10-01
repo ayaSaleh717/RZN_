@@ -6,8 +6,9 @@ let conversationStep = 0;
 let userPreferences = {};
 let openaiApiKey = localStorage.getItem('openaiApiKey') || '';
 
-// --- Dark mode toggle (minimal) ---
-let currentTheme = localStorage.getItem('theme') || 'light';
+// --- Theme system: respects prefers-color-scheme with manual override ---
+let currentTheme = 'light';
+const systemMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
 function applyTheme(theme) {
     const root = document.documentElement;
@@ -30,9 +31,33 @@ function updateThemeToggleButton() {
 }
 
 function initTheme() {
-    // Force default to light on every load
-    currentTheme = 'light';
-    applyTheme('light');
+    const saved = localStorage.getItem('theme'); // 'light' | 'dark' | null
+    if (saved === 'light' || saved === 'dark') {
+        applyTheme(saved);
+    } else {
+        // follow system by default
+        const systemTheme = systemMedia.matches ? 'dark' : 'light';
+        currentTheme = systemTheme;
+        // do not persist when following system implicitly
+        const root = document.documentElement;
+        if (systemTheme === 'dark') root.setAttribute('data-theme', 'dark');
+        else root.removeAttribute('data-theme');
+        updateThemeToggleButton();
+        // react to system changes only if no explicit user preference
+        try {
+            systemMedia.addEventListener('change', (e) => {
+                const explicit = localStorage.getItem('theme');
+                if (explicit === 'light' || explicit === 'dark') return;
+                const next = e.matches ? 'dark' : 'light';
+                currentTheme = next;
+                if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+                else document.documentElement.removeAttribute('data-theme');
+                updateThemeToggleButton();
+            });
+        } catch (_) {
+            // older browsers may need .addListener; skip for simplicity
+        }
+    }
 }
 
 // إضافة متغيرات جديدة للتحكم بالصوت

@@ -1,42 +1,66 @@
 /* Color Theme Variables */
 :root {
+    /* Light theme (modern pastel brand) */
     --primary-color: #C599B6;
     --secondary-color: #E6B2BA;
     --accent-color: #FAD0C4;
-    --background-color-light: #E8BCB9;
-    --background-color-dark: #44444E;
+    --background-color-light: #FAF5F7; /* softer, cleaner light bg */
+    --background-color-dark: #0B1220;  /* deep slate/navy for dark */
+
     /* Ensure components using var(--background-color) have a value in light mode */
     --background-color: var(--background-color-light);
-    --text-dark: #333;
-    --white: #ffffff;
-    --shadow: rgba(114, 134, 211, 0.2);
+
+    /* Text tokens */
+    --text-dark: #1F2937;  /* slate-800 */
+    --text-light: #6B7280; /* slate-500 for placeholders/secondary */
+
+    /* Surfaces */
+    --white: #ffffff;      /* card/surface in light */
+    --surface-muted: #F5F7FA;
+
+    /* Borders & shadows */
+    --border-color: color-mix(in srgb, var(--text-dark) 10%, transparent);
+    --shadow: rgba(114, 134, 211, 0.18);
 }
 
 /* Dark theme overrides (use only requested colors) */
 :root[data-theme="dark"] {
-    --primary-color: #333456;   /* primary */
-    --secondary-color: #595B83; /* secondary */
-    --accent-color: #F4ABC4;    /* accent */
-    --background-color: var(--background-color-dark);/* background */
-    --text-dark: #F4ABC4;       /* main text on dark */
-    --text-light: #595B83;      /* subtle text */
-    --white: #595B83;           /* surfaces/cards in dark */
+    /* Trending dark palette: violet/indigo accents on deep slate surfaces */
+    --primary-color: #8B5CF6;   /* violet-500 */
+    --secondary-color: #6366F1; /* indigo-500 */
+    --accent-color: #F472B6;    /* pink-400 */
+
+    --background-color: var(--background-color-dark);
+    --text-dark: #E5E7EB;       /* slate-200 */
+    --text-light: #94A3B8;      /* slate-400 */
+
+    /* Surfaces/cards in dark */
+    --white: #111827;           /* slate-800 as elevated surface */
+    --surface-muted: #0F172A;   /* slate-900 for muted areas */
+
+    /* Borders/shadows tune for dark */
+    --border-color: rgba(148, 163, 184, 0.22);
     /* keep shadow as-is to avoid structural changes */
 }
 
 body {
-    background-color: var(--background-color-light);
+    background-color: var(--background-color);
     color: var(--text-dark);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.2"/></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.08"/></svg>');
 }
 
 :root[data-theme="dark"] body {
     background-color: var(--background-color-dark);
+}
+
+/* Smooth theme transitions */
+html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .message, .records-container, .speech-container, .nutrition-tips, .voice-settings, .quick-questions, .form-group input, .form-group select, .form-group textarea, .btn, .btn-secondary {
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 @keyframes fadeIn {
@@ -76,7 +100,9 @@ body {
 
 .content {
     padding: 20px;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
 }
 
 .welcome-section {
@@ -124,8 +150,8 @@ body {
 
 .tab {
     /* overflow: hidden; */
-    border: 1px solid var(--accent-color);
-    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    background-color: var(--surface-muted);
     border-radius: 10px 10px 0 0;
     display: flex;
     flex-wrap: wrap;
@@ -157,11 +183,11 @@ body {
 .tabcontent {
     display: none;
     padding: 15px;
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-color);
     border-top: none;
     border-radius: 0 0 10px 10px;
     animation: fadeEffect 0.5s;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
 }
 
 @keyframes fadeEffect {
@@ -198,11 +224,11 @@ body {
 .chat-container {
     height: 300px;
     overflow-y: auto;
-    border: 2px solid var(--secondary-color);
+    border: 1px solid var(--border-color);
     border-radius: 15px;
     padding: 15px;
     margin: 15px 0;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
     display: flex;
     flex-direction: column;
 }
@@ -221,29 +247,38 @@ body {
 }
 
 .bot-message {
-    background-color: var(--accent-color);
+    background-color: color-mix(in srgb, var(--accent-color) 24%, var(--white));
     align-self: flex-start;
     border-bottom-left-radius: 4px;
-    border: 1px solid var(--accent-color);
-    color: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
 }
 
 .user-message {
-    background-color: var(--accent-color);
+    background-color: color-mix(in srgb, var(--secondary-color) 24%, var(--white));
     align-self: flex-end;
     border-bottom-right-radius: 4px;
-    border: 1px solid var(--secondary-color);
-    color: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-dark);
+}
+
+/* Dark-tuned chat bubbles */
+:root[data-theme="dark"] .bot-message {
+    background-color: color-mix(in srgb, var(--accent-color) 20%, var(--white) 80%);
+    color: var(--text-dark);
+}
+:root[data-theme="dark"] .user-message {
+    background-color: color-mix(in srgb, var(--secondary-color) 22%, var(--white) 78%);
 }
 
 .chat-input {
     display: flex;
     margin-top: 10px;
 
-    border: 2px solid var(--secondary-color);
+    border: 1px solid var(--border-color);
     border-radius: 25px;
     overflow: hidden;
-    background-color: white;
+    background-color: var(--white);
 }
 
 .chat-input input {
@@ -252,7 +287,7 @@ body {
     border: none;
     outline: none;
     font-size: 1rem;
-    background-color: var(--background-color);
+    background-color: transparent;
 }
 
 .chat-input button {
@@ -440,7 +475,7 @@ body {
 }
 
 .records-table th, .records-table td {
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-color);
     padding: 8px;
     text-align: right;
 }
@@ -453,7 +488,7 @@ body {
 }
 
 .records-table tr:nth-child(even) {
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
 }
 
 .records-table tr:hover {
@@ -464,14 +499,14 @@ body {
     max-height: 300px;
     overflow-y: auto;
     margin: 15px 0;
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 10px;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
 }
 
 .speech-container {
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
     border-radius: 15px;
     padding: 15px;
     margin: 15px 0;
@@ -483,7 +518,7 @@ body {
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
 }
 
 .speech-status.listening {
@@ -493,14 +528,14 @@ body {
 }
 
 .speech-text {
-    background-color: white;
-    border: 1px solid var(--accent-color);
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 15px;
     min-height: 100px;
     margin: 10px 0;
     overflow-y: auto;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
 }
 
 .language-selector {
@@ -513,13 +548,13 @@ body {
 .language-selector select {
     padding: 8px 15px;
     border-radius: 5px;
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-color);
     margin: 0 10px;
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
 }
 
 .nutrition-tips {
-    background-color: var(--background-color);
+    background-color: var(--surface-muted);
     border-radius: 10px;
     padding: 15px;
     margin: 20px 0;
@@ -914,9 +949,9 @@ body {
   display: block;
   width: 100%;
   padding: 14px 16px;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  background-color: var(--background-color);
+  background-color: var(--white);
   color: var(--text-dark);
   min-height: 44px; /* better touch target */
   font-size: 1rem;
@@ -929,7 +964,7 @@ body {
 .form-group input:hover,
 .form-group select:hover,
 .form-group textarea:hover {
-  border-color: var(--secondary-color);
+  border-color: color-mix(in srgb, var(--secondary-color) 50%, var(--border-color));
 }
 
 /* Focus ring */
@@ -938,7 +973,7 @@ body {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(114, 134, 211, 0.18);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.20);
 }
 
 /* Placeholder */
@@ -950,7 +985,7 @@ body {
 .form-group textarea:disabled,
 .form-group input[readonly],
 .form-group textarea[readonly] {
-  background-color: color-mix(in srgb, var(--background-color) 85%, var(--white));
+  background-color: color-mix(in srgb, var(--white) 85%, transparent);
   cursor: not-allowed;
   opacity: 0.75;
 }
