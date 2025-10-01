@@ -100,17 +100,9 @@ body {
 }
 :root[data-theme="dark"] .tab .tablinks:hover {
   color: #FFFFFF;
-  background-color: color-mix(in srgb, var(--surface-muted) 80%, var(--primary-color) 20%);
 }
 :root[data-theme="dark"] .tab .tablinks.active {
   color: #FFFFFF; /* keep readable when active */
-  border-color: rgba(255, 255, 255, 0.18);
-  /* Dark-accented background for active tab */
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--primary-color) 35%, var(--surface-muted)) 0%,
-    color-mix(in srgb, var(--secondary-color) 35%, var(--surface-muted)) 100%
-  );
 }
 
 /* Smooth theme transitions */
