@@ -1140,4 +1140,29 @@ width: 100%;
     transform: none;
   }
   .floating-btn_2 { left: 84px; }
+
+  /* Prevent horizontal scroll and oversized blocks */
+  html, body { overflow-x: hidden; }
+
+  /* Constrain floating container width on small screens */
+  .floating-main-div {
+    min-width: auto;            /* override desktop min-width: 400px */
+    width: calc(100vw - 24px);  /* keep small side padding */
+    max-width: 100%;
+  }
+
+  /* Slightly tighter paddings for content areas */
+  .content { padding: 12px; }
+  .floating-content { padding: 12px; max-width: 100%; box-sizing: border-box; }
+
+  /* Inputs: comfortable but not oversized */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 14px;
+    min-height: 40px;
+    font-size: 0.95rem;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
