@@ -793,11 +793,14 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
 
 /* ط£ظ†ظ…ط§ط· ط¬ط¯ظٹط¯ط© ظ„ظ„طھط­ظƒظ… ط¨ط§ظ„طµظˆطھ */
 .voice-settings {
-    background-color: var(--background-color);
-    border-radius: 10px;
-    padding: 15px;
-    margin: 15px 0;
-    border: 1px dashed #8bc34a;
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 18px var(--shadow);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .voice-settings h4 {
@@ -807,24 +810,39 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
 }
 
 .setting-group {
-    display: flex;
+    display: grid;
+    grid-template-columns: 180px 1fr 60px; /* label | control | value */
     align-items: center;
-    margin: 10px 0;
+    gap: 10px 14px;
+    margin: 12px 0;
 }
 
 .setting-group label {
-    margin-left: 10px;
-    min-width: 100px;
+    margin: 0;
+    min-width: 0;
 }
 
 .setting-group input[type="range"] {
-    flex: 1;
+    width: 100%;
+    min-width: 0;
 }
 
 .setting-value {
-    margin-right: 10px;
-    min-width: 40px;
+    justify-self: end;
+    min-width: 44px;
     text-align: center;
+}
+
+/* Responsive stacking for voice settings */
+@media (max-width: 768px) {
+  .voice-settings { padding: 14px; }
+  .setting-group {
+    grid-template-columns: 1fr; /* stack: label, control, value */
+    gap: 6px;
+  }
+  .setting-group label { order: 1; }
+  .setting-group input[type="range"] { order: 2; }
+  .setting-value { order: 3; justify-self: end; }
 }
 
 .tts-btn {
