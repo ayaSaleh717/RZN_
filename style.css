@@ -1101,11 +1101,12 @@ width: 100%;
     100% { transform: scale(1); }
 }
 
-/* حالة النطق */
+ /* حالة النطق */
   #speech-status.listening {
       color: #4CAF50;
       font-weight: bold;
   }
+}
 
 /* Mobile layout: sizes, margins, paddings only */
 @media (max-width: 768px) {
@@ -1114,15 +1115,13 @@ width: 100%;
   .btn-secondary,
   .btn-quick,
   .chat-input button {
-    width: 100%;
-    margin: 8px 0;
-  }
+     width: 100%;
+     margin: 8px 0;
+   }
 
   /* Tabs stacked */
   .tab { flex-direction: column; }
   .tab button { width: 100%; }
-
-  /* Quick buttons single column */
   .quick-buttons { grid-template-columns: 1fr; }
 
   /* Compact paddings */
@@ -1140,20 +1139,16 @@ width: 100%;
     transform: none;
   }
   .floating-btn_2 { left: 84px; }
+}
 
-  /* Prevent horizontal scroll and oversized blocks */
-  html, body { overflow-x: hidden; }
+/* Extra-narrow phones (e.g., Redmi 14C logical width ~360px) */
+@media (max-width: 400px) {
+  /* Tighten side paddings to avoid horizontal scroll */
+  body, .content { padding-left: 10px; padding-right: 10px; }
+  .floating-content { padding: 12px; }
 
-  /* Constrain floating container width on small screens */
-  .floating-main-div {
-    min-width: auto;            /* override desktop min-width: 400px */
-    width: calc(100vw - 24px);  /* keep small side padding */
-    max-width: 100%;
-  }
-
-  /* Slightly tighter paddings for content areas */
-  .content { padding: 12px; }
-  .floating-content { padding: 12px; max-width: 100%; box-sizing: border-box; }
+  /* Ensure containers never exceed viewport */
+  .floating-main-div { width: calc(100vw - 20px); max-width: 100%; }
 
   /* Inputs: comfortable but not oversized */
   .form-group input,
@@ -1165,4 +1160,21 @@ width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
+
+  /* Buttons: compact vertical spacing */
+  .btn,
+  .btn-secondary,
+  .btn-quick,
+  .chat-input button { margin: 6px 0; }
+
+  /* Floating buttons: reduce gap so both fit comfortably */
+  .floating-btn { top: 10px; left: 10px; }
+  .floating-btn_2 { top: 10px; left: 74px; }
+}
+
+/* Ultra-narrow safeguard (old small DP settings) */
+@media (max-width: 360px) {
+  .floating-main-div { width: calc(100vw - 16px); }
+  .floating-btn { top: 8px; left: 8px; }
+  .floating-btn_2 { top: 8px; left: 68px; }
 }
