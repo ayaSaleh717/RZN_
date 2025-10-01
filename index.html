@@ -59,10 +59,10 @@
                     <i class="fas fa-play-circle"></i>
                     ابدأ رحلة التغذية
                 </button>
-                <!-- <button class="btn" onclick="goToNextContent('ai-chat-page')">
+                <button class="btn" onclick="goToNextContent('ai-chat-page')">
                     <i class="fas fa-comments"></i>
                     دردشة مع رِزْن الذكي
-                </button> -->
+                </button>
                 <button class="btn btn-secondary" onclick="goToNextContent('health-record-page')">
                     <i class="fas fa-heartbeat"></i>
                     السجلات الصحية
@@ -180,22 +180,22 @@
                 </div>
 
                 <div class="speech-container">
-                    <div class="language-selector">
+                    <!-- <div class="language-selector">
                         <label for="lang-select">اختر اللغة:</label>
                         <select id="lang-select" onchange="changeLanguage()">
                             <option value="ar-SA">العربية (SA)</option>
                             <option value="en-US">English (US)</option>
                             <option value="fr-FR">Français (FR)</option>
                             <option value="es-ES">Español (ES)</option>
-                        </select>
+                        </select> -->
                         <!-- <label for="voice-select" style="margin-inline-start:10px;">الصوت:</label> -->
                     <!-- <select id="voice-select" onchange="changeVoice()"> -->
                         <!-- voices will be populated dynamically -->
-                    </select>
-                </div>
+                    <!-- </select> -->
+                <!-- </div> -->
 
                 <!-- إعدادات الصوت المضافة -->
-                <div class="voice-settings">
+                <!-- <div class="voice-settings">
                     <h4>
                         <i class="fas fa-volume-up"></i>
                         إعدادات الصوت</h4>
@@ -222,13 +222,13 @@
                         <input type="checkbox" id="auto-speak" checked onchange="updateSpeechSettings()">
                         <label for="auto-speak">التحدث التلقائي للأسئلة</label>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="speech-status" id="speech-status">
+                <!-- <div class="speech-status" id="speech-status">
                     انقر على الميكروفون لبدء التحدث
-                </div>
+                </div> -->
 
-                <div class="voice-controls">
+                <!-- <div class="voice-controls">
                     <button class="btn btn-voice" id="start-listening" onclick="toggleListening()">
                         <i class="fas fa-microphone"></i>
                         التحدث مع رِزْن
@@ -245,16 +245,16 @@
                         <i class="fas fa-trash"></i>
                         مسح النص
                     </button>
-                </div>
-
+                </div> -->
+<!-- 
                 <div class="speech-text" id="speech-text" contenteditable="true">
                     النص المعترف به سيظهر هنا...
-                </div>
+                </div> -->
 
-                <button class="btn btn-success" onclick="sendVoiceMessage()">
+                <!-- <button class="btn btn-success" onclick="sendVoiceMessage()">
                     <i class="fas fa-paper-plane"></i>
                     إرسال النص إلى رِزْن
-                </button>
+                </button> -->
             </div>
 
             <div class="chat-container" id="chat-container">

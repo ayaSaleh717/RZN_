@@ -51,6 +51,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    overflow-x: hidden; /* prevent horizontal scroll globally */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23ffffff" opacity="0.08"/></svg>');
 }
 
@@ -106,7 +107,7 @@ body {
 }
 
 /* Smooth theme transitions */
-html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .message, .records-container, .speech-container, .nutrition-tips, .voice-settings, .quick-questions, .form-group input, .form-group select, .form-group textarea, .btn, .btn-secondary {
+html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .message, .records-container,  .nutrition-tips, .voice-settings, .quick-questions, .form-group input, .form-group select, .form-group textarea, .btn, .btn-secondary {
     transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
@@ -150,6 +151,17 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
     background-color: var(--surface-muted);
     border: 1px solid var(--border-color);
     border-radius: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden; /* keep any child from overflowing horizontally */
+}
+
+/* Make sure form containers never exceed the content width */
+.content .form-group {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .welcome-section {
@@ -609,11 +621,11 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
 }
 
 .speech-container {
-    background-color: var(--surface-muted);
+    /* background-color: var(--surface-muted);
     border-radius: 15px;
     padding: 15px;
     margin: 15px 0;
-    border: 2px solid #7b1fa2;
+    border: 2px solid #7b1fa2; */
 }
 
 .speech-status {
@@ -843,6 +855,32 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
   .setting-group label { order: 1; }
   .setting-group input[type="range"] { order: 2; }
   .setting-value { order: 3; justify-self: end; }
+}
+
+/* Desktop enhancements for voice settings */
+@media (min-width: 1024px) {
+  .voice-settings {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* two columns of groups */
+    column-gap: 16px;
+    row-gap: 10px;
+    align-items: start;
+  }
+  .voice-settings h4,
+  .voice-settings .auto-speak,
+  .voice-settings .tts-btn {
+    grid-column: 1 / -1; /* span full width */
+  }
+  .voice-settings .setting-group { margin: 8px 0; }
+  .voice-settings .setting-group {
+    grid-template-columns: 200px 1fr 64px; /* label | control | value */
+  }
+}
+
+@media (min-width: 1280px) {
+  .voice-settings .setting-group {
+    grid-template-columns: 220px 1fr 72px;
+  }
 }
 
 .tts-btn {

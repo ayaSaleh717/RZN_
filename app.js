@@ -24,7 +24,6 @@ function applyTheme(theme) {
 
 function updateThemeToggleButton() {
     const btn = document.getElementById('themeToggle');
-    if (!btn) return;
     const dark = currentTheme === 'dark';
     btn.textContent = dark ? '☀️' : '🌙';
     btn.setAttribute('aria-label', dark ? 'Light theme' : 'Dark theme');
@@ -35,34 +34,14 @@ function initTheme() {
     if (saved === 'light' || saved === 'dark') {
         applyTheme(saved);
     } else {
-        // follow system by default
-        const systemTheme = systemMedia.matches ? 'dark' : 'light';
-        currentTheme = systemTheme;
-        // do not persist when following system implicitly
+        // Force light as the initial default theme regardless of system preference
+        currentTheme = 'light';
         const root = document.documentElement;
-        if (systemTheme === 'dark') root.setAttribute('data-theme', 'dark');
-        else root.removeAttribute('data-theme');
+        root.removeAttribute('data-theme');
+        // Do not persist immediately; let user toggle if they want dark
         updateThemeToggleButton();
-        // react to system changes only if no explicit user preference
-        try {
-            systemMedia.addEventListener('change', (e) => {
-                const explicit = localStorage.getItem('theme');
-                if (explicit === 'light' || explicit === 'dark') return;
-                const next = e.matches ? 'dark' : 'light';
-                currentTheme = next;
-                if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-                else document.documentElement.removeAttribute('data-theme');
-                updateThemeToggleButton();
-            });
-        } catch (_) {
-            // older browsers may need .addListener; skip for simplicity
-        }
     }
 }
-
-// إضافة متغيرات جديدة للتحكم بالصوت
-let speechSynthesis = window.speechSynthesis;
-let currentUtterance = null;
 let isSpeaking = false;
 // إعدادات الصوت المحسنة للذكاء الاصطناعي
 let autoSpeakEnabled = localStorage.getItem('autoSpeakEnabled') === 'true' || true;
