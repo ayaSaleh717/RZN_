@@ -59,10 +59,7 @@
                     <i class="fas fa-play-circle"></i>
                     ابدأ رحلة التغذية
                 </button>
-                <button class="btn" onclick="goToNextContent('ai-chat-page')">
-                    <i class="fas fa-comments"></i>
-                    دردشة مع رِزْن الذكي
-                </button>
+                
                 <button class="btn btn-secondary" onclick="goToNextContent('health-record-page')">
                     <i class="fas fa-heartbeat"></i>
                     السجلات الصحية
@@ -74,27 +71,41 @@
             </div>
 
 
-            <!-- صفحة كلمة المرور -->
-            <div id="password-page" class="hidden">
-                <div class="password-protected">
-                    <i class="fas fa-lock"></i>
-                    <h3>السجلات الصحية محمية</h3>
-                    <p>يجب إدخال كلمة المرور للوصول إلى السجلات</p>
 
-                    <div class="form-group">
-                        <input type="password" id="password-input" placeholder="أدخل كلمة المرور">
-                    </div>
 
-                    <button class="btn" onclick="checkPassword()">
-                        <i class="fas fa-key"></i>
-                        دخول
-                    </button>
-                    <button class="btn btn-secondary" onclick="goBackContent('main-page')">
-                        <i class="fas fa-arrow-right"></i>
-                        رجوع
-                    </button>
-                </div>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+      
 
             <!-- صفحة البدء -->
             <div id="start-page" class="hidden">
@@ -179,83 +190,8 @@
                     </div>
                 </div>
 
-                <div class="speech-container">
-                    <!-- <div class="language-selector">
-                        <label for="lang-select">اختر اللغة:</label>
-                        <select id="lang-select" onchange="changeLanguage()">
-                            <option value="ar-SA">العربية (SA)</option>
-                            <option value="en-US">English (US)</option>
-                            <option value="fr-FR">Français (FR)</option>
-                            <option value="es-ES">Español (ES)</option>
-                        </select> -->
-                        <!-- <label for="voice-select" style="margin-inline-start:10px;">الصوت:</label> -->
-                    <!-- <select id="voice-select" onchange="changeVoice()"> -->
-                        <!-- voices will be populated dynamically -->
-                    <!-- </select> -->
-                <!-- </div> -->
-
-                <!-- إعدادات الصوت المضافة -->
-                <!-- <div class="voice-settings">
-                    <h4>
-                        <i class="fas fa-volume-up"></i>
-                        إعدادات الصوت</h4>
-
-                    <div class="setting-group">
-                        <span class="setting-value" id="rate-value">0.8</span>
-                        <label for="speech-rate">سرعة النطق:</label>
-                        <input type="range" id="speech-rate" min="0.5" max="1.5" step="0.1" value="0.8" onchange="updateSpeechSettings()">
-                    </div>
-
-                    <div class="setting-group">
-                        <span class="setting-value" id="pitch-value">1.0</span>
-                        <label for="speech-pitch">نغمة الصوت:</label>
-                        <input type="range" id="speech-pitch" min="0.5" max="2.0" step="0.1" value="1.0" onchange="updateSpeechSettings()">
-                    </div>
-
-                    <div class="setting-group">
-                        <span class="setting-value" id="volume-value">100%</span>
-                        <label for="speech-volume">مستوى الصوت:</label>
-                        <input type="range" id="speech-volume" min="0" max="1" step="0.1" value="1.0" onchange="updateSpeechSettings()">
-                    </div>
-
-                    <div class="auto-speak">
-                        <input type="checkbox" id="auto-speak" checked onchange="updateSpeechSettings()">
-                        <label for="auto-speak">التحدث التلقائي للأسئلة</label>
-                    </div>
-                </div> -->
-
-                <!-- <div class="speech-status" id="speech-status">
-                    انقر على الميكروفون لبدء التحدث
-                </div> -->
-
-                <!-- <div class="voice-controls">
-                    <button class="btn btn-voice" id="start-listening" onclick="toggleListening()">
-                        <i class="fas fa-microphone"></i>
-                        التحدث مع رِزْن
-                    </button>
-                    <button class="btn tts-btn" id="tts-btn" onclick="toggleSpeaking()">
-                        <i class="fas fa-volume-up"></i>
-                        نطق النص
-                    </button>
-                    <button class="btn" onclick="repeatQuestion()">
-                        <i class="fas fa-redo"></i>
-                        تكرار السؤال
-                    </button>
-                    <button class="btn btn-secondary" onclick="clearTranscript()">
-                        <i class="fas fa-trash"></i>
-                        مسح النص
-                    </button>
-                </div> -->
-<!-- 
-                <div class="speech-text" id="speech-text" contenteditable="true">
-                    النص المعترف به سيظهر هنا...
-                </div> -->
-
-                <!-- <button class="btn btn-success" onclick="sendVoiceMessage()">
-                    <i class="fas fa-paper-plane"></i>
-                    إرسال النص إلى رِزْن
-                </button> -->
-            </div>
+            
+      
 
             <div class="chat-container" id="chat-container">
                 <div class="message bot-message">
@@ -293,65 +229,7 @@
         </div>
 
 
-        <!-- صفحة الدردشة مع الذكاء الاصطناعي -->
-        <div id="ai-chat-page" class="hidden">
-            <div class="welcome-section">
-                <h2>دردشة مع رِزْن الذكي</h2>
-                <p>اسألني أي سؤال عن التغذية، الصحة، الرياضة، أو أي موضوع آخر!</p>
-            </div>
-
-            <div class="api-key-input" id="api-key-section">
-                <h4>
-                    <i class="fas fa-key"></i>
-                    مفتاح OpenAI API</h4>
-                <p>أدخل مفتاح API للتمتع بميزات الذكاء الاصطناعي الكاملة:</p>
-                <div class="form-group">
-                    <input type="password" id="api-key-input" placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" value="">
-                </div>
-                <button class="btn btn-success" onclick="saveApiKey()">
-                    <i class="fas fa-save"></i>
-                    حفظ المفتاح
-                </button>
-                <p style="font-size: 0.8rem; margin-top: 10px; color: #666;">
-                    يمكنك الحصول على مفتاح API من
-                    <a href="https://platform.openai.com/api-keys/" target="_blank">OpenAI</a>
-                </p>
-            </div>
-
-            <div class="chat-container" id="ai-chat-container">
-                <div class="message bot-message">
-                    <div>مرحباً! أنا رِزْن، صديقك الذكي المدعوم بالذكاء الاصطناعي. 🧠</div>
-                    <div>يمكنني مساعدتك في:</div>
-                    <div>• نصائح التغذية الصحية 🍎</div>
-                    <div>• خطط الوجبات الغذائية 📋</div>
-                    <div>• معلومات عن الرياضة واللياقة 🏃‍♂️</div>
-                    <div>• الإجابة على أي سؤال لديك! 💭</div>
-                </div>
-            </div>
-
-            <div class="quick-questions">
-                <h4>أسئلة سريعة يمكنك تجربتها:</h4>
-                <div class="quick-buttons">
-                    <button class="btn-quick" onclick="askQuickQuestion('ما هي أفضل الأطعمة للطاقة في الصباح؟')">أفضل فطور للطاقة</button>
-                    <button class="btn-quick" onclick="askQuickQuestion('كيف يمكنني زيادة وزني بطريقة صحية؟')">زيادة الوزن الصحية</button>
-                    <button class="btn-quick" onclick="askQuickQuestion('ما هي تمارين الرياضة المناسبة للمبتدئين؟')">تمارين للمبتدئين</button>
-                    <button class="btn-quick" onclick="askQuickQuestion('كم كوب ماء يجب شربه يومياً؟')">كمية الماء اليومية</button>
-                </div>
-            </div>
-
-            <div class="chat-input">
-                <input type="text" id="ai-user-input" placeholder="اكتب سؤالك هنا...">
-                <button onclick="sendAiMessage()">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-
-            <button class="btn btn-secondary" onclick="goBackContent('main-page')">
-                <i class="fas fa-arrow-right"></i>
-                رجوع
-            </button>
-        </div>
-
+      
 
         <!-- صفحة النظام الغذائي -->
         <div id="diet-plan-page" class="hidden">
@@ -747,6 +625,40 @@
                 <div class="progress" style="width: 100%"></div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- صفحة السجل الصحي مع الجدول -->
         <div id="health-record-page" class="hidden">

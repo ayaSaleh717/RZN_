@@ -164,6 +164,27 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
   margin-right: 0;
 }
 
+/* Mobile: stack to a single column */
+@media (max-width: 768px) {
+  #start-page,
+  #measurements-page { grid-template-columns: 1fr; gap: 12px; }
+  /* Mobile buttons should be full width */
+  #start-page .btn,
+  #measurements-page .btn {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+/* Desktop: allow main container to grow with content (no internal scroll clipping) */
+@media (min-width: 1024px) {
+  .floating-content {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
 .welcome-section {
     text-align: center;
     margin-bottom: 30px;
