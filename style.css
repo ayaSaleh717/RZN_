@@ -990,6 +990,7 @@ body {
 .avatar .fa-robot {
   font-size: 3.2rem;
   background: linear-gradient(135deg, var(--white) 0%, var(--accent-color) 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15)) drop-shadow(0 0 10px rgba(114,134,211,0.28));
@@ -1034,6 +1035,7 @@ width: 100%;
   width: 100%;
 }
 /* --- Main Page Dimension Fit --- */
+@media (max-width: 768px) {
   #main-page {
     width: 100%;
     max-width: 100%;
@@ -1042,7 +1044,8 @@ width: 100%;
     box-sizing: border-box;
   }
   .floating{
-      display: flex;
+    display: flex;
+    flex-wrap: wrap;
       flex-wrap: wrap;
   }
 
@@ -1097,41 +1100,42 @@ width: 100%;
 }
 
 /* حالة النطق */
-#speech-status.listening {
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-/* =====================
-   Responsive (Mobile)
-   ===================== */
-@media (max-width: 768px) {
-  body { padding: 12px; }
-
-  .container { margin: 12px 0; border-radius: 16px; }
-
-  .header { padding: 16px; }
-  .header h1 { font-size: 2rem; }
-  .header p { font-size: 1rem; }
-
-  .floating-main-div {
-    top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 100vw; max-width: 100vw; min-width: auto;
-    height: auto; max-height: 90vh; border-radius: 16px;
+  #speech-status.listening {
+      color: #4CAF50;
+      font-weight: bold;
   }
-  .floating-content { padding: 20px; max-height: calc(90vh - 40px); }
-:root[data-theme="dark"] .btn,
-:root[data-theme="dark"] .btn-quick,
-:root[data-theme="dark"] .chat-input button,
-:root[data-theme="dark"] .floating-btn,
-:root[data-theme="dark"] .floating-btn_2,
-:root[data-theme="dark"] .print-btn {
-  color: #FFF7F3; /* high-contrast light text */
-}
 
-/* Secondary button sits on dark surface in dark mode */
-:root[data-theme="dark"] .btn-secondary {
-  color: var(--text-dark);   /* #F4ABC4 on dark slate */
-  background: var(--white);  /* dark surface from dark theme */
-}
+/* Mobile layout: sizes, margins, paddings only */
+@media (max-width: 768px) {
+  /* Stack primary/action buttons */
+  .btn,
+  .btn-secondary,
+  .btn-quick,
+  .chat-input button {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  /* Tabs stacked */
+  .tab { flex-direction: column; }
+  .tab button { width: 100%; }
+
+  /* Quick buttons single column */
+  .quick-buttons { grid-template-columns: 1fr; }
+
+  /* Compact paddings */
+  .header { padding: 12px; }
+  .content { padding: 12px; }
+  .floating-content { padding: 16px; }
+
+  /* Floating buttons row at top-left */
+  .floating-btn,
+  .floating-btn_2 {
+    top: 12px;
+    bottom: auto;
+    left: 12px;
+    right: auto;
+    transform: none;
+  }
+  .floating-btn_2 { left: 84px; }
 }
