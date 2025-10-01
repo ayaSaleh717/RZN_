@@ -1228,23 +1228,78 @@ function openDay(evt, dayName) {
     for (let i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-
     document.getElementById(dayName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
 function printDietPlan() {
+    // Find the weekly plan container
+    const planPage = document.getElementById('diet-plan-page');
+    if (!planPage) {
+        alert('لم يتم العثور على خطة النظام الغذائي للطباعة');
+        return;
+    }
+
+    // Build a hidden print container
+    const printPlan = document.createElement('div');
+    printPlan.id = 'print-plan';
+    printPlan.className = 'print-plan';
+    printPlan.style.display = 'none'; // hidden on screen; CSS @media print will show
+
+    // Optional header
+    const header = document.createElement('div');
+    header.innerHTML = `
+      <div style="text-align:center;margin-bottom:12px">
+        <h1 style="margin:0 0 6px">الخطة الغذائية الأسبوعية</h1>
+        <small>${new Date().toLocaleDateString('ar-SA')}</small>
+      </div>
+    `;
+    printPlan.appendChild(header);
+
+    const dayIds = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    const dayTitles = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+
+    dayIds.forEach((id, idx) => {
+        const tab = document.getElementById(id);
+        if (!tab) return;
+        const dayPlan = tab.querySelector('.day-plan');
+        const page = document.createElement('section');
+        page.className = 'print-day';
+        page.dir = 'rtl';
+        page.style.pageBreakInside = 'avoid';
+        page.innerHTML = `
+          <header style="text-align:center;margin-bottom:10px">
+            <h2 style="margin:0">${dayTitles[idx]}</h2>
+          </header>
+        `;
+        if (dayPlan) {
+            const clone = dayPlan.cloneNode(true);
+            page.appendChild(clone);
+        }
+        printPlan.appendChild(page);
+    });
+
+    document.body.appendChild(printPlan);
+
+    // Use onafterprint to cleanup reliably
+    const cleanup = () => {
+        try { document.body.removeChild(printPlan); } catch (_) {}
+        window.removeEventListener('afterprint', cleanup);
+    };
+    window.addEventListener('afterprint', cleanup);
     window.print();
+    // Fallback cleanup
+    setTimeout(cleanup, 1500);
 }
 
 // تحديث شريط التقدم
   function updateProgressBar() {
       const progressBar = document.getElementById('main-progress');
-      const healthRecords = JSON.parse(localStorage.getItem('healthRecords')) || [];
-  
-      if (healthRecords.length > 0) {
-          progressBar.style.width = '100%';
-      } else {
+      if (!progressBar) return;
+      try {
+          const records = JSON.parse(localStorage.getItem('healthRecords') || '[]');
+          progressBar.style.width = records.length > 0 ? '100%' : '0%';
+      } catch (e) {
           progressBar.style.width = '0%';
       }
   }

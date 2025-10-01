@@ -814,7 +814,6 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
     background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
     margin: 10px 0;
 }
-
 .install-btn:hover {
     background: linear-gradient(135deg, #F57C00 0%, #EF6C00 100%);
 }
@@ -824,9 +823,6 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
     color: #c62828;
     padding: 10px;
     border-radius: 5px;
-    text-align: center;
-    margin: 10px 0;
-    display: none;
 }
 
 .online-message {
@@ -839,49 +835,20 @@ html, body, .floating-main-div, .content, .tab, .tabcontent, .chat-container, .m
     display: none;
 }
 
-/* ط£ظ†ظ…ط§ط· ط§ظ„ط·ط¨ط§ط¹ط© */
+/* Print layout rules */
 @media print {
-    body {
-        background: white;
-        padding: 0;
-    }
-    
-    .container {
-        box-shadow: none;
-        margin: 0;
-        max-width: 100%;
-    }
-    
-    .floating-btn, .notification, .btn {
-        display: none !important;
-    }
-    
-    .food-plan {
-        page-break-inside: avoid;
-    }
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; margin: 0; max-width: 100%; }
+    .floating-btn, .notification, .btn { display: none !important; }
+    .food-plan { page-break-inside: avoid; }
+    .floating-main-div { display: none !important; }
+    #print-plan.print-plan { display: block !important; }
+    .print-day { page-break-after: always; }
+    .print-day:last-child { page-break-after: auto; }
+    @page { size: A4; margin: 12mm; }
 }
 
-/* Floating Main Div Styling */
-.floating-main-div {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    min-width: 400px;
-    max-width: 90vw;
-    max-height: 90vh;
-    background: var(--white);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px var(--shadow);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    border: 2px solid var(--accent-color);
-    /* clip inner scroll so rounded corners look correct */
-    overflow: hidden;
-}
-
-.floating-content {
+  .floating-content {
     padding: 30px;
     margin: 0;
     width: 100%;
