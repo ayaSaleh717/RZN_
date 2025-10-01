@@ -1129,11 +1129,18 @@ width: 100%;
   .content { padding: 12px; }
   .floating-content { padding: 16px; }
 
+  /* Typography scale for mobile */
+  .header h1 { font-size: 1.8rem; }
+  .welcome-section h2 { font-size: 1.2rem; }
+  .btn { font-size: 0.95rem; }
+  .avatar .fa-robot { font-size: 2.6rem; }
+
   /* Shrink floating container on mobile */
   .floating-main-div {
-    width: calc(100vw - 24px);
-    max-width: 100%;
+    width: 92vw;
+    max-width: 420px;
     min-width: auto;
+    margin: 0 auto;
     border-radius: 16px;
   }
 
@@ -1147,16 +1154,19 @@ width: 100%;
     transform: none;
   }
   .floating-btn_2 { left: 84px; }
+
+  /* Chat height tuning on mobile */
+  .chat-container { height: 240px; }
 }
 
 /* Extra-narrow phones (e.g., Redmi 14C logical width ~360px) */
 @media (max-width: 400px) {
   /* Tighten side paddings to avoid horizontal scroll */
   body, .content { padding-left: 10px; padding-right: 10px; }
-  .floating-content { padding: 12px; }
+  .floating-content { padding: 10px; }
 
-  /* Ensure containers never exceed viewport */
-  .floating-main-div { width: calc(100vw - 20px); max-width: 100%; }
+  /* Ensure containers never exceed viewport (narrow phones) */
+  .floating-main-div { width: 90vw; max-width: 340px; margin: 0 auto; }
 
   /* Inputs: comfortable but not oversized */
   .form-group input,
@@ -1168,6 +1178,14 @@ width: 100%;
     max-width: 100%;
     box-sizing: border-box;
   }
+
+  /* Smaller buttons on extra-narrow */
+  .btn { padding: 10px 14px; font-size: 0.92rem; }
+  .btn-quick { font-size: 0.85rem; padding: 8px; }
+  .tab button { font-size: 0.9rem; padding: 10px; }
+
+  /* Chat height tighter */
+  .chat-container { height: 200px; }
 
   /* Buttons: compact vertical spacing */
   .btn,
